@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content%}
+<head>
+  <style>
+.btn:focus, .btn:active, button:focus, button:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+#image-gallery .modal-footer{
+  display: block;
+  align-content: center
+}
+
+.thumb{
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.content {
+    max-width: 500px;
+    margin: auto;
+}
+  </style>
+</head>
+<body>
+  <h1>  {{ current_user.username }} </h1>
+  <h2>{{ current_user.id }}</h2>
+  <div>
+      <div class="media">
+          <img class="rounded-circle account-img" src="{{ profile_picture }}">
+      </div>
+  </div> 
+
+  <div class="container" class="content">
+      <div class="row">
+        <div class="col-sm">
+            {% for images in current_user.images %}
+            <img src="{{ images.image_url }}">
+            <a style="background-color: grey; padding: 10px;" href="{{ url_for('users.show', id=images.id)}}">asd</a>
+            </form>
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+
+
+<div>
+    <form action={{url_for("image.image_create", id = current_user.id )}} method="POST" enctype="multipart/form-data" >
+  {{ form.accountimages.label }} 
+  {{ form.accountimages(class="form-control")}}
+</div>
+
+<div class="form-group">
+  {{ form.submit(class="btn btn-outline-info") }}
+</div>
+
+</body>
+{% endblock %}
+
+
