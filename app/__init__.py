@@ -31,7 +31,7 @@ assets = Environment(app)
 assets.register('main_js', js)
 
 # Connects our Flask App to our Database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://Chubb:@localhost/instagram'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DATABASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'cc883108399d3ddb3186679bbd56c136'
 db = SQLAlchemy(app)

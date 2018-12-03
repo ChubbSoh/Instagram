@@ -29,7 +29,7 @@ def create():
     
         flash(f'Account created for {form.email.data}!', 'sucess')
         return redirect(url_for('sessions.home'))
-    return render_template('users/account.html', title='Register', form=form )
+    return render_template('users/register.html', title='Register', form=form )
 
 @users_blueprint.route('/account', methods=["GET","POST"])
 @login_required
